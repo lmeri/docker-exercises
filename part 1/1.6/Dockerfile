@@ -1,7 +1,7 @@
 FROM ubuntu:16.04 
 
 WORKDIR /mydir
-COPY ./backend-example-docker .
+COPY . .
 
 EXPOSE 8000
 

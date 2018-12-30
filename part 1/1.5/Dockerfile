@@ -1,7 +1,7 @@
 FROM ubuntu:16.04 
 
 WORKDIR /mydir
-COPY ./frontend-example-docker .
+COPY . .
 
 EXPOSE 5000
 
