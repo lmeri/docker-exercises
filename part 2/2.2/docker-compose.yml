@@ -8,8 +8,12 @@ services:
       - ./backend-example-docker/logs.txt:/mydir/logs.txt
     environment:
       - FRONT_URL=http://localhost:5000
+      - REDIS=redis
     ports:
       - 8000:8000
+
+  redis:
+    image: redis
 
   frontend-example-docker:
     image: lmeri/frontend-example
