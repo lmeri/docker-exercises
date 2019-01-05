@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  backend-example-docker:
+      image: lmeri/backend-example
+      build: ./backend-example-docker
+      volumes:
+        - ./backend-example-docker/logs.txt:/mydir/logs.txt
+      environment:
+        - FRONT_URL=http://localhost:5000
+      ports:
+        - 8000:8000
+
+  frontend-example-docker:
+    image: lmeri/frontend-example
+    build: ./frontend-example-docker
+    environment:
+      - API_URL=http://localhost:8000
+    ports:
+      - 5000:5000
