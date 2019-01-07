@@ -11,10 +11,11 @@ services:
       - REDIS=redis
     ports:
       - 8000:8000
-
+    links:
+      - redis
   redis:
     image: redis
-
+    container_name: redis
   frontend-example-docker:
     image: lmeri/frontend-example
     build: ./frontend-example-docker

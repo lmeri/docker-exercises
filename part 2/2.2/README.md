@@ -1,1 +1,0 @@
-Move Dockerfile from /back to /backend-example-docker and from /front to /frontend-example-docker.
