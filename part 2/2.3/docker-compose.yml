@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  backend-example-docker:
+    image: lmeri/backend-example
+    build: ./backend-example-docker
+    volumes:
+      - ./backend-example-docker/logs.txt:/mydir/logs.txt
+    environment:
+      - FRONT_URL=http://localhost:5000
+      - REDIS=redis
+      - DB_USERNAME=example
+      - DB_PASSWORD=example_password
+      - DB_NAME=example
+      - DB_HOST=db
+    ports:
+      - 8000:8000
+    links:
+      - redis
+      - db
+  redis:
+    image: redis
+    container_name: redis
+  db:
+    image: postgres
+    container_name: postgres
+    environment:
+      - POSTGRES_PASSWORD=example_password
+      - POSTGRES_USER=example
+  frontend-example-docker:
+    image: lmeri/frontend-example
+    build: ./frontend-example-docker
+    environment:
+      - API_URL=http://localhost:8000
+    ports:
+      - 5000:5000
