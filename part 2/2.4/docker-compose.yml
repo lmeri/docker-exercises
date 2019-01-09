@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  training-kurkkumopo:
+    image: lmeri/training-kurkkumopo
+    build: ./ml-kurkkumopo-training
+    container_name: training-kurkkumopo
+    volumes: 
+      - models:/src/model
+      - data:/src/imgs
+  backend-kurkkumopo:
+    image: lmeri/backend-kurkkumopo
+    build: ./ml-kurkkumopo-backend
+    container_name: backend-kurkkumopo
+    ports: 
+      - 5000:5000
+    volumes: 
+      - models:/src/model
+    depends_on: 
+      - training-kurkkumopo
+  frontend-kurkkumopo:
+    image: lmeri/frontend-kurkkumopo
+    build: ./ml-kurkkumopo-frontend
+    container_name: frontend-kurkkumopo
+    ports: 
+      - 3000:3000
+    depends_on: 
+      - backend-kurkkumopo
+
+volumes:
+  models:
+  data:
+
