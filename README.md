@@ -1,3 +1,3 @@
-#### Exercises for HY DevOps With Docker course
+#### Exercises for DevOps With Docker course
 
-Course @ [DevOps With Docker](docker-hy.github.io)
+Course @ [DevOps With Docker](http://docker-hy.github.io)
